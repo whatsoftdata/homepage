@@ -8,11 +8,17 @@
   <link rel="stylesheet" href="../../style.css">
   <style>
 	@font-face {font-family: NDGM; src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');}
+	html,body{
+		overflow: hidden;
+		margin: 0px;
+	}
 	#draggable { 
 	position: absolute;
-	width: 200px; 
+	top:50px;
+	left:50px;
 	padding: 0.5em;
-	padding-top: 1.5em;
+	max-width: 20em;
+	text-align:right;
 	}
 	#tabs{
 	display: flex;
@@ -50,14 +56,25 @@
 	}
 	#photo{
 	width: 100%;
-	
+	}
+	#photos{
+	cursor: grab;
+	}
+	#closebutton{
+	font: normal normal normal 2vh NDGM;
+	text-align: right;
+	cursor: pointer;
 	}
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "div[id = draggable]" ).draggable();
+    $( "div[id = draggable]" ).draggable({scroll:false});
+	$( "span[id = closebutton]").click(function () {
+        $(this).parent().hide();
+        event.stopPropagation();
+	})
   } );
   </script>
 </head>
@@ -72,53 +89,71 @@
 	  <img id = "wsd_logo" src = "../../images/whatsoftdata_Logo.png">
 	  <img id = "makeitsoft" src = "../../images/Make_it_soft.png">
 	  <img id = "softRX_logo" src = "../../images/SoftRX_Logo_black.png">
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/00_1.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/00_2.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/detail_2.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/01_1.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/01_2.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/ref_idea.png">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/ref2d.png">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/ref2d2.png">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/ref3d.png">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/ref3d2.png">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/03_1.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/door_2.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/door_3.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/door_5.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/window_test2.jpg">
-	</div>
-	 <div id="draggable" class="ui-widget-content">
-		<img id ="photo" src = "images/window_test4.jpg">
+	  <div id = "photos">
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/window_test4.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/window_test2.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/door_5.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/door_3.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/door_2.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/03_1.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/ref3d2.png">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/ref3d.png">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/ref2d2.png">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/ref2d.png">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/ref_idea.png">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/01_2.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/01_1.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/detail_2.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/00_2.jpg">
+		 </div>
+		 <div id="draggable" class="ui-widget-content">
+			<span id = "closebutton">X</span>
+			<img id ="photo" src = "images/00_1.jpg">
+		 </div>
 	</div>
 </div>
 </body>
