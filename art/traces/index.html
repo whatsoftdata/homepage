@@ -3,11 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Draggable - Default functionality</title>
-  <link rel="stylesheet" href="jquery/jquery-ui.css">
+  <title>whatsoftdata</title>
+  <link rel="stylesheet" href="../jquery/jquery-ui.css">
   <link rel="stylesheet" href="style.css">
   <style>
-  #draggable { width: 150px; height: 150px; padding: 0.5em; }
+	@font-face {font-family: NDGM; src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');}
+	#draggable { width: 150px; height: 150px; padding: 0.5em; }
+	#tabs{
+	display: flex;
+	flex-direction: row;
+	height: 6vh;
+	font: normal normal normal 2vh NDGM;
+	color:#FFFFFF;
+	}
+	#rcorners1 {
+	border-radius: 25px 25px 0px 0px;
+	background: #FD5000;
+	padding: 20px;
+	padding-right: 50px;
+	}
+	#rcorners2 {
+	display: flex;
+	border-radius: 25px 25px 0px 0px;
+	background: #666666;
+	padding: 20px;
+	padding-right: 50px;
+	border: 2px solid black;
+	border-top-width: 10px;
+	border-bottom-width: 0px;
+	}
+	#main_area{
+	background: #FD5000;
+	width:100%;
+	height: 100vh;
+	}
+	#makeitsoft{
+	width: 40%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	filter: brightness(0%);
+	}
+	#softRX_logo{
+	position:absolute;
+	left: 15px;
+	bottom: 15px;
+	width: 5vw;
+	}
+	#wsd_logo{
+	position:absolute;
+	right: 15px;
+	top: calc(6vh + 15px);
+	height: 3vh;
+	filter: brightness(0%);
+	}
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -17,12 +67,19 @@
   } );
   </script>
 </head>
-<body>
- 
-<div id="draggable" class="ui-widget-content">
-  <p>Drag me around</p>
+<body style="overflow:hidden; background-color:#000000;">
+ <div id="tabs">
+	 <div id="rcorners2">Make it soft</div>
+	 <div id="rcorners2">Threshold</div>
+	 <div id="rcorners1">Traces</div>
+	 <div id="rcorners2">What_the_f**k_is_whatsoftdata?</div>
+ </div>
+ <div id="main_area">
+	  <img id = "wsd_logo" src = "../../images/whatsoftdata_Logo.png">
+	  <img id = "makeitsoft" src = "../../images/Make_it_soft.png">
+	  <img id = "softRX_logo" src = "../../images/SoftRX_Logo_black.png">
+	 <div id="draggable" class="ui-widget-content">
+	</div>
 </div>
- 
- 
 </body>
 </html>
