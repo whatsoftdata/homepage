@@ -1,14 +1,19 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>whatsoftdata</title>
+  <title>whatsoftdata-Threshold</title>
   <link rel="stylesheet" href="../../jquery/jquery-ui.css">
   <link rel="stylesheet" href="../../style.css">
   <style>
 	@font-face {font-family: NDGM; src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');}
-	#draggable { width: 150px; height: 150px; padding: 0.5em; }
+	#draggable { 
+	position: absolute;
+	width: 200px; 
+	padding: 0.5em;
+	padding-top: 1.5em;
+	}
 	#tabs{
 	display: flex;
 	flex-direction: row;
@@ -43,12 +48,16 @@
 	height: 3vh;
 	filter: brightness(0%);
 	}
+	#photo{
+	width: 100%;
+	
+	}
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#draggable" ).draggable();
+    $( "div[id = draggable]" ).draggable();
   } );
   </script>
 </head>
@@ -64,6 +73,52 @@
 	  <img id = "makeitsoft" src = "../../images/Make_it_soft.png">
 	  <img id = "softRX_logo" src = "../../images/SoftRX_Logo_black.png">
 	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/00_1.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/00_2.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/detail_2.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/01_1.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/01_2.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/ref_idea.png">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/ref2d.png">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/ref2d2.png">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/ref3d.png">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/ref3d2.png">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/03_1.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/door_2.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/door_3.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/door_5.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/window_test2.jpg">
+	</div>
+	 <div id="draggable" class="ui-widget-content">
+		<img id ="photo" src = "images/window_test4.jpg">
 	</div>
 </div>
 </body>
