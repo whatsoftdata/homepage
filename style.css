@@ -14,3 +14,25 @@ body { padding: 0; margin: 0 }
 #unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
 #unity-fullscreen-button { float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
 #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+
+#rcorners1 {
+    border-radius: 25px 25px 0px 0px;
+    background: #FD5000;
+    padding: 20px;
+    padding-right: 50px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#rcorners2 {
+    display: flex;
+    border-radius: 25px 25px 0px 0px;
+    background: #666666;
+    padding: 20px;
+    padding-right: 50px;
+    border: 2px solid black;
+    border-top-width: 10px;
+    border-bottom-width: 0px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
