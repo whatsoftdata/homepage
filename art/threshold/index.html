@@ -14,11 +14,11 @@
 	}
 	#draggable { 
 	position: absolute;
+	display: block;
 	top:50px;
 	left:50px;
 	padding: 0.5em;
-	max-width: 20em;
-	text-align:right;
+	width:20em;
 	}
 	#tabs{
 	display: flex;
@@ -55,22 +55,24 @@
 	filter: brightness(0%);
 	}
 	#photo{
-	width: 100%;
+	max-width:100%;
+	max-height:calc(100% - calc(2vh));
 	}
 	#photos{
 	cursor: grab;
 	}
 	#closebutton{
+	display:block;
 	font: normal normal normal 2vh NDGM;
-	text-align: right;
 	cursor: pointer;
 	}
+	.ui-resizable-handle { z-index: auto !important; }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "div[id = draggable]" ).draggable({scroll:false});
+    $( "div[id = draggable]" ).draggable({scroll:false}).resizable();
 	$( "span[id = closebutton]").click(function () {
         $(this).parent().hide();
         event.stopPropagation();
