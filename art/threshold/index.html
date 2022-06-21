@@ -8,63 +8,23 @@
   <link rel="stylesheet" href="../../style.css">
   <style>
 	@font-face {font-family: NDGM; src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');}
-	html,body{
-		overflow: hidden;
-		margin: 0px;
+	
+	#photos{
+	position: relative;
+	top: 5em;
+	left:5em;
+	cursor: grab;
+	display:flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
 	}
 	#draggable { 
-	position: absolute;
 	display: block;
-	top:50px;
-	left:50px;
 	padding: 0.5em;
-	width:20em;
-	}
-	#tabs{
-	display: flex;
-	flex-direction: row;
-	height: 6vh;
-	font: normal normal normal 2vh NDGM;
-	color:#FFFFFF;
-	}
-
-	#main_area{
-	background: #FD5000;
-	width:100%;
-	height: 100vh;
-	}
-	#makeitsoft{
-	width: 40%;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	filter: brightness(0%);
-	}
-	#softRX_logo{
-	position:absolute;
-	left: 15px;
-	bottom: 15px;
-	width: 5vw;
-	}
-	#wsd_logo{
-	position:absolute;
-	right: 15px;
-	top: calc(6vh + 15px);
-	height: 3vh;
-	filter: brightness(0%);
-	}
-	#photo{
-	max-width:100%;
-	max-height:calc(100% - calc(2vh));
-	}
-	#photos{
-	cursor: grab;
-	}
-	#closebutton{
-	display:block;
-	font: normal normal normal 2vh NDGM;
-	cursor: pointer;
+	width:10em;
+	margin-right: -10em;
+	margin-bottom:-5em;
+	z-index:2;
 	}
 	.ui-resizable-handle { z-index: auto !important; }
   </style>
@@ -72,7 +32,9 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "div[id = draggable]" ).draggable({scroll:false}).resizable();
+    $( "div[id = draggable]" ).draggable({scroll:false}).resizable({
+    aspectRatio: true
+});
 	$( "span[id = closebutton]").click(function () {
         $(this).parent().hide();
         event.stopPropagation();
