@@ -1,0 +1,591 @@
+﻿ <!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>whatsoftdata</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="stylesheet" href="jquery/jquery-ui.min.css">
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+	<script src="jquery.ui.touch-punch.min.js"></script>
+  </head>
+  <body style="text-align: center; margin:0; padding:0; overflow: hidden; ">
+    <div id="unity-container" class="unity-desktop">
+    <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display:block; "></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+    </div>
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+	  var build_forlder_target ="/WhatSoftData_Website";
+	  var compression_ending = ".unityweb";
+      var loaderUrl = buildUrl + build_forlder_target +".loader.js";
+      var config = {
+        dataUrl: buildUrl + build_forlder_target+".data"+compression_ending,
+        frameworkUrl: buildUrl + build_forlder_target+".framework.js"+compression_ending,
+        codeUrl: buildUrl + build_forlder_target +".wasm"+compression_ending,
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "whatsoftdata",
+        productName: "website",
+        productVersion: "0.1",
+        showBanner: unityShowBanner,
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      }
+
+      loadingBar.style.display = "none";
+
+      config.devicePixelRatio = 2.5;
+      var script = document.createElement("script");
+	  var unity_isLive = false;
+	  var unity = null;
+      script.src = loaderUrl;
+      script.onload = () => {
+		//var count = 0;
+		//var countMax = 400;
+	    //var counter = setInterval(function(){
+		//	count++;
+		//	if(count>countMax){
+		//	  clearInterval(counter);return;
+		//	}
+		//}, 10);
+		createUnityInstance(canvas, config, (progress) => {
+          //progressBarFull.style.width = 100 * progress + "%";
+		  //min_loading = Math.min(progress,count/countMax);
+		  min_loading=(1-progress);
+		  var r = parseInt(236*min_loading);
+		  var g = parseInt(52*min_loading);
+		  var b = parseInt(0*min_loading);
+		  canvas.style.background = "rgb("+r+","+g+","+b+")";
+		}).then((unityInstance) => {
+          loadingBar.style.display = "none";
+		  unity_isLive = true;
+		  unity = unityInstance;
+        }).catch((message) => {
+          //alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+	<!-- Text part of the page -->
+	<style>
+		@font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
+		@font-face {font-family: Suit-Variable; src: url('fonts/SUIT-Variable.ttf');}
+		:root {
+		--menu-en-font-family: NeueHaasDisplayRoman;
+		--menu-en-font-weight: 1000;
+		--text-en-font-size: 20px;
+		--text-en-font-family: NeueHaasDisplayRoman;
+		--text-en-font-weight: 400;
+		--clear-background: rgba(0,0,0,0);
+		--text-pos-right: 50vw;
+		--text-pos-top: 30vh;
+		--screen-scale: min(calc(100vw/1920),calc(100vh/1080));
+		--margin: 50px;
+		}
+		.ko-text{
+		color:white; 
+		font-family:SUIT-Variable; 
+		font-weight:var(--text-en-font-weight); 
+		font-size: 14.2px;
+		line-height: 1.74;
+		text-align: left;
+		margin-top: 10px;
+		margine-bottom:15px;
+		}
+		.eng-text{
+		color:rgb(225,225,225); 
+		font-family:var(--text-en-font-family); 
+		font-weight:var(--text-en-font-weight); 
+		font-size:15px;
+		line-height: 1.6;
+		text-align: left;
+		hyphens: auto;
+		letter-spacing: 1px;
+		margin-top: 15px;
+		margin-bottom:40px;
+		}
+		h1{
+			font-family: var(--text-en-font-family); 
+			font-weight:900; 
+			margin-bottom: 20px;
+			margin-top: 0px;
+		}
+		h2{
+			font-family: var(--text-en-font-family); 
+			font-weight:600; 
+			color:rgb(253,80,0);
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		@media only screen and (orientation: portrait) {
+			#menu{
+			display: flex;
+			flex-direction:column-reverse;
+			align-items: flex-start;
+			width:calc(50vw-50);
+			position:absolute; 
+			bottom:var(--margin); 
+			left: var(--margin);
+			text-align:left; 
+			vertical-align:bottom;
+			}
+		   .button{ 
+			color:white; 
+			font-family:var(--menu-en-font-family); 
+			font-weight:var(--menu-en-font-weight); 
+			font-size:calc(240/1980*100vw); 
+			position: absolute; 
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			cursor:pointer;
+			line-height:calc(240/1980*100vw);
+			vertical-align: bottom; 
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+		     -khtml-user-select: none; /* Konqueror HTML */
+			   -moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+					user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+			}
+			.footer{
+			color:white; 
+			position:absolute; 
+			transform-origin: bottom left;
+			transform: rotate(-90deg);
+			left:35px;
+			bottom: var(--margin); 
+			text-align:left; 
+			vertical-align: bottom; 
+			font-family:var(--text-en-font-family); 
+			font-weight:var(--text-en-font-weight); 
+			font-size:.5em;
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+		     -khtml-user-select: none; /* Konqueror HTML */
+			   -moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+					user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+			}
+		   .draggable { 
+			position: absolute; 
+			left:50vw;
+			right: var(--margin); 
+			top: 50vh;
+			padding: 0px; 
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			text-align: left;
+			line-height:28px;
+			text-align: justify;
+			cursor:pointer;
+			}
+		}
+		@media only screen and (orientation: landscape) {
+			#menu{
+			display: flex;
+			flex-direction:column-reverse;
+			align-items: flex-start;
+			width:calc(50vw-50);
+			position:absolute; 
+			bottom:var(--margin); 
+			left: var(--margin);
+			text-align:left; 
+			vertical-align:bottom;
+			}
+		   .button{ 
+			color:white; 
+			font-family:var(--menu-en-font-family); 
+			font-weight:var(--menu-en-font-weight); 
+			font-size:calc(120/1980*100vw); 
+			position: absolute;
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			cursor:pointer;
+			vertical-align: bottom; 
+			line-height:calc(120/1980*100vw);
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+		     -khtml-user-select: none; /* Konqueror HTML */
+			   -moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+					user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+			}
+			.footer{
+			color:white; 
+			position:absolute; 
+			left:50vw;
+			right:var(--margin); 
+			bottom: var(--margin); 
+			text-align:right; 
+			vertical-align: bottom; 
+			font-family:var(--text-en-font-family); 
+			font-weight:var(--text-en-font-weight); 
+			font-size:12px;
+			}
+		   .draggable { 
+			color:white; 
+			position: absolute; 
+			left: 25vw; 
+			top: var(--text-pos-top);
+			width: 25vw; 
+			padding: 0px; 
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			text-align: left;
+			line-height:28px;
+			text-align: justify;
+			cursor:pointer;
+			}
+		}
+    </style>
+    <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1080*100vh); left:var(--margin); top:var(--margin);">
+    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1080*100vh); right:var(--margin); top:var(--margin);">
+	<div id="footer" class="footer" style="bottom: var(--margin); ">
+		1.2v&nbsp<br>
+		Copyright © 2022. whatsoftdata.
+		All rights reserved.
+	</div>
+	<div id="menu">
+		<input id="where" class="button" type="button" value="where" style="position:relative;"><br>
+		<input id="what" class="button" type="button" value="what" style="position:relative;"><br>
+		<input id="who" class="button" type="button" value="who" style="position:relative;">
+	</div>
+	<ol>
+    <div id="who-text" class="draggable">	
+	  <h1>about</h1>
+	  <h2>whatsoftdata</h2>
+      <p class="ko-text"><b>왓소프트데이타</b>는 수치화로 대변되는 데이타의 인간적 면모를 수집하고 분석하며 질문하는 아트 디자인 콜렉티브입니다. 데이터를 기반으로 사람과 사람, 사람과 사회, 사람과 데이터의 물리적, 사회적 균형과 연결에 대하여 이야기 합니다.
+	  <p class="eng-text"><b><i>whatsoftdata</b></i> is an art collective that seeks to soften thee pervasive hardness of technology by collecting, analyzing, and querying the humanness of data. whatsoftdata uses data as a medium to examine the physical and social balance and connection - between people, people and society, and people and data.
+	  <h2>vision</h2>
+	  <p class="ko-text">왓소프트데이타는 <b>질문하고, 도발하고, 대항</b>합니다. 어떤 결론을 도출하기보다는 더 많은 의문을 추구합니다. 부드럽고 유동적이며 촉각, 감정, 주관을 포용합니다. 해석에 열려 있는 결론과 완벽하지 않은 모호함으로 대변됩니다. 수치, 아이템, 정보, 그 어떤 것이든 모아 분석하여 의미를 부여하며 가설을 시험합니다.
+	  <p class="eng-text">whatsoftdata<i><b> questions, provokes, and endorses antagonism</b></i>. whatsoftdata ends with another question rather than a conclusion. Fuzzy and malleable, we embrace the touchy, feely side of things. We test hypotheses by collecting numbers, items, information and analyzing and extracting meaning from them.
+	  <h2>domain</h2>
+	  <p class="ko-text">왓소프트데이타는 아트, 디자인, 테크놀로지의 경계에서 작업하여 사회적, 감각적 경험들을 제공합니다. 네트워크와 규칙 기반 시스템은 왓소프트데이타의 중요한 두가지 작업 방식이며, 인터랙티브 설치 작업, XR 경험, 참여형 전시 등의 형태로 표현됩니다.
+	  <p class="eng-text">whatsoftdata works in the intersection of art, design, and technology, producing social and perceptual experiences. whatsoftdata considers network and the rule-based system as its two main domains. Interactive art installations, XR experiences, and participator art are a few of how our work takes shape.
+	  <h1 style="margin-bottom: 60px">members</h1>
+	  <h2>insun</h2>
+	  <p class="eng-text" style="margin-top:10px; margin-bottom:10px;">insun.pkg@whatsoftdata.com</p>
+	  <p class="ko-text"><b>아트 디렉터, 미디어 아티스트</b><br>
+		인선의 실감 미디어 작업들은 인터랙션, 형상화, 그리고 물질성을 복합적으로 이용한 시스템을 통해 사회적 관계를 탐구합니다. 인선은 UCLA에서 불어불문학을 공부하고, 시카고 예술 대학에서 예술 학사를 취득했습니다.
+	  <p class="eng-text"><b>Art Director, Media Artist</b><br>
+		Insun is an intermedia artist who generates immersive experiences to explore social relations, using a complex system of interaction, embodiment, and materiality. Insun holds BA from UCLA and BFA from the School of the Art Institute of Chicago.
+	  <h2>sooyeon</h2>
+	  <p class="eng-text" style="margin-top:10px; margin-bottom:10px;">sooyeon.ai@whatsoftdata.com</p>
+	  <p class="ko-text"><b>브랜딩 디렉터, 현대 시각 문화 연구원</b><br>
+		한국과 프랑스 이곳저곳에서 이것저것을 배웠습니다. 기획, 디자인, 아트, 마케팅의 잡탕 브랜딩에 엉뚱함 한 바가지 넣곤 합니다.
+	  <p class="eng-text"><b>Branding Director, Otaku</b><br>
+		Sooyeon learned this and that from here and there in Korea and France. She likes to add a bucket of wackiness to the branding which is a mixture of UI/UX, art, and marketing.
+	  </p>
+	  <h2>yesun</h2>
+	  <p class="eng-text" style="margin-top:10px; margin-bottom:10px;">yesun.3ds@whatsoftdata.com</p>
+	  <p class="ko-text"><b>공간 디텍터, 이야기꾼</b><br>
+		예선이는 공간을 좋아해서<br>
+		실내건축무대미술전시기획<br>
+		으로 파리ESAT에서 석사를 취득하였습니다.
+	  <p class="eng-text"><b>Space Design Director, Storyteller</b><br>
+		Yesun got a master’s degree from Paris ESAT in<br>
+		interior-architecture-stage-art-exhibition-curation<br>
+		because she likes space.
+	  <h2>jungsu</h2>
+	  <p class="eng-text" style="margin-top:10px; margin-bottom:10px;">jungsu.cs@whatsoftdata.com</p>
+	  <p class="ko-text"><b>테크니컬 디렉터, 데이터 과학자</b><br>
+		UCLA에서 인지과학 학사를 취득하고 챕맨 대학교에서 연산 및 데이터과학 석사과정을 졸업하였습니다. 다양한 연구 경력을 바탕으로 게임화를 이용한 심리측정을 통해 인지과학과 데이터 과학의 상호작용을 추구합니다. 정수의 최종 목표는 인간과 같은 (챗봇이 아닌!) 인공지능을 만드는 것입니다.
+	  <p class="eng-text"><b>Techincal Director, Data Scientist</b><br>
+		Jungsu earned Cognitive Science, B.A. at UCLA and Computational and Data Science, M.S. at Chapman University. He seeks an interaction between Cognitive Science and Data Science using gamified psychometrics. His ultimate goal is to create a human-like AI, <b>NOT</b> a conversational AI.​
+    </div>
+    <div id="what-text" class="draggable">
+		<h1>Soft Rx</h1>
+		<h2>about</h2>
+		<p class="ko-text">소프트레시피는 사회적 경험을 게임화하여 예술적 실험으로 재해석합니다. 소프트레시피는 스테이지이며 플랫폼이자 시스템입니다. 방문객은 특정 역할을 맡고 디렉션에 따라 행동하게 됩니다. 방문객은 실험적 경험을 통해 타인, 공간, 그리고 그들이 생성한 소프트 데이타와 서로 연결되어 상호작용하게 됩니다.
+		<p class="eng-text">SoftRx provides artistic experiments through the gamification of social experiences. SoftRx is a stage, a level, a platform, a system whereby the visitors take on a role and follow a specific set of instructions. The visitors ultimately become interconnected with one another, the space, and the soft data they produce.
+		<h2>#1 soft launch</h2>
+
+		<p>
+		<span class="ko-text"><b>흔적 - 인터랙티브 방명록</b><br>
+		<span class="eng-text"><b>Traces - An interactive Guest Book</b><br>Unity3D, Azure Kinect
+		<p class="ko-text">인간은 미생물로 이루어진 내적 생태계로 이루어져 있습니다. 섭취하는 음식과 약, 생활환경 등에 의해 유기적으로 변화하는 이 생태계는, 특히 만나고 교류하게 되는 사람들에 가장 큰 영향을 받습니다. 
+		<p class="ko-text">이 작업은 방명록이라는 개념을 이 내적 생태계로 재구성하여, 체류시간과 거리 데이터를 이 공간과의 친밀도를 나타내는 수치로 해석합니다. 다녀온 흔적을 남기는 이 의식을 통해, 이 생태계는 이 공간과 교류하며 이 공간을 완성시킨 사람들과 함께 진화해나갑니다.
+		<p class="eng-text">Humans are composed of internal ecosystem of microbiota. This internal ecosystem is influenced by multiple factors, including food, environment, medication, but most importantly, the people you interact with. 
+		<p class="eng-text">This work reimagines the guest book as such an ecosystem and translates the time spent and the distance as the intimacy you share with this space. Through the ritual of leaving your traces, this ecosystem evolves to embody the engagement of the people that completes the space.
+		
+		<p>
+		<span class="ko-text"><b>퍼포밍 - 이모지 필터</b><br>
+		<span class="eng-text"><b>Performing - A face filter</b><br>SparkAR, Maya
+		<p class="ko-text">이모티콘은 복합적인 기호학적 시스템으로, 대면 커뮤니케이션에서 표정이 하는 역할을 대신합니다. 다양한 이모티콘을 분류하고 표준화하기 위해 추천 알고리즘과 같은 많은 시도가 있어 왔습니다. 이 페이스 필터 레이어는 얼굴 근육 사용 없이 사전 분류된 감정을 연기할 수 있게 합니다. 
+		<p class="eng-text">Emojis are a complex system of semiotics that serves the role of facial expressions in in-person communications. Many attempts have been made to categorize and standardize diverse expressions of emojis, including recommendation algorithms. This layer lets you perform the pre-categorized emotions without engaging your face muscles.
+
+		<p>
+		<span class="ko-text"><b>한계점 - 공감각적 경계</b><br>
+		<span class="eng-text"><b>Threshold - A synesthetic adjoining</b><br>Unity3D, Arduino
+		<p class="ko-text">한계점을 지나 몽상으로 넘쳐흐르는 경계의 역할을 하는 공감각적 경험. 이 공간은 세월이 지나 사라지겠지만 그전까지 기억을 담는 용기이자 몽상가들의 피난처가 될 것입니다.
+		<p class="eng-text">Let this serve as a threshold spilling over into daydreaming. This house will be demolished, but until then will serve as a vessel for memories and a safe haven for daydreamers. 
+	</div>
+    <div id="where-text" class="draggable">
+		<h1>contact</h1>
+		<h2>offline</h2>
+		<span class="ko-text"><b>왓소프트데이타 <span class="eng-text">whatsoftdata</b>
+
+		<p class="ko-text">서울특별시 강남구 강남대로 584 6층 353호, 우편번호 06043
+		<p class="eng-text">F6, 353, 584, Gangnam-daero, Gangnam-gu, Seoul, Republic of Korea, code postal 06043
+		<span class="ko-text"><b>소프트레시피 <span class="eng-text">Soft Rx</b>
+		<p class="ko-text">서울특별시 서초구 서초대로30길 27-3 1층, 우편번호 06662
+		<p class="eng-text">F1, 27-3, Seocho-daero 30-gil, Seocho-gu, Seoul, Republic of Korea, code postal 06662
+
+		<h2>online</h2>
+		<p class="eng-text">
+		www.whatsoftdata.com<br>
+		info@whatsoftdata.com
+    </div>
+	</ol>
+    <script>
+	//Unity functions placeholders
+	function logo_unity(){
+		console.log("logo");
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
+		}
+		console.log("-1,1");
+	}
+	function symbol_unity(){
+		console.log("symbol");
+		if(unity_isLive) unity.SendMessage('GraphicsManager', 'EasterEgg');
+	}
+	function who_unity(){
+		console.log("who");
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
+		}
+		console.log("0,0");
+	}
+	function what_unity(){
+		console.log("what");
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
+		}
+		console.log("2,0");
+	}
+	function where_unity(){
+		console.log("where");
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
+		}
+		console.log("3,0");
+	}
+
+	var revert_delay = 3000;
+	var mouse_over = false;
+	//initialize draggables hidden
+	$( ".draggable" )
+	.hide()
+	.draggable({
+		axis: "y",
+		revert: false,
+		revertDuration: 1000,
+		scroll: false,
+		helper: function(event, ui){
+            return $('<div></div>').clone().css('opacity',0)
+        },
+        create: function(){
+            // When the draggable is created, save its starting
+            // position into a data attribute, so we know where we
+            // need to revert to.
+            var $this = $(this);
+            $this.data('starttop',$this.position().top);
+        },
+        drag: function(event, ui){
+            // During dragging, animate the original object to
+            // follow the invisible helper with custom easing.
+            $(this).stop().animate({
+                top: "+="+(ui.helper.position().top - $(this).position().top)*3
+            },700,'easeOutCirc');
+        }
+	});
+	//each button actions
+	var fadein_speed = 200;
+	var fadeout_speed = 200;
+	var start_anim_speed = 1000;
+	var start_anim_offset = 1000;
+	var delay_between=300;
+	var delay_anim=0;
+	var animationType = "easeOutBack";
+    $( "#logo" ).click( function( event ) 
+	{
+		$( "#who-text" ).hide("fade",{},fadeout_speed);
+		$( "#what-text" ).hide("fade",{},fadeout_speed);
+		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		logo_unity();
+	} )
+	.css(
+		"top","+="+start_anim_offset,
+	)
+	.delay(delay_anim)
+	.animate({
+		top:"-="+start_anim_offset,
+	},start_anim_speed,animationType);
+	delay_anim+=delay_between;
+    $( "#symbol" ).click( function( event ) 
+	{
+		symbol_unity();
+	} )
+	.css(
+		"top","+="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		top:"-="+start_anim_offset,
+	},start_anim_speed,animationType);
+	delay_anim+=delay_between;
+    $( "#who" )
+	.click( function( event ) 
+	{
+		$( "#who-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		$( "#what-text" ).hide("fade",{},fadeout_speed);
+		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		who_unity();
+		this.value = "누가";
+	} )
+	.mouseenter(function(){
+		this.value = "누가";
+		}
+	)
+	.mouseleave(function(){
+		this.value = "who";
+		}
+	)
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,animationType);
+	delay_anim+=delay_between;
+    $( "#what" ).click( function( event ) 
+	{
+		$( "#who-text" ).hide("fade",{},fadeout_speed);
+		$( "#what-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		what_unity();
+		this.value = "무엇을";
+	} )
+	.mouseenter(function(){
+		this.value = "무엇을";
+		}
+	)
+	.mouseleave(function(){
+		this.value = "what";
+		}
+	)
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,animationType);
+	delay_anim+=delay_between;
+    $( "#where" ).click( function( event ) 
+	{
+		$( "#who-text" ).hide("fade",{},fadeout_speed);
+		$( "#what-text" ).hide("fade",{},fadeout_speed);
+		$( "#where-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		where_unity();
+	} )
+	.mouseenter(function(){
+		this.value = "어디서";
+		}
+	)
+	.mouseleave(function(){
+		this.value = "where";
+		}
+	)
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,animationType);
+	delay_anim+=delay_between;
+	$( "#footer")
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,animationType);
+    </script>
+  </body>
+</html>
