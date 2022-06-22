@@ -7,32 +7,17 @@
   <link rel="stylesheet" href="../../jquery/jquery-ui.css">
   <link rel="stylesheet" href="../../style.css">
   <style>
-	@font-face {font-family: NDGM; src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');}
-	
-	#photos{
-	position: absolute;
-	top: 10%;
-	left:10%;
-	cursor: grab;
-	display:flex;
-	flex-flow: row wrap;
-	align-items: flex-start;
-	}
-	#draggable { 
-	display: block;
-	padding: 0.5em;
-	width:10em;
-	margin-right: -10em;
-	margin-bottom:-5em;
-	z-index:2;
-	}
-	.ui-resizable-handle { z-index: auto !important; }
+
+      @font-face {
+          font-family: NDGM;
+          src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');
+      }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "div[id = draggable]" ).draggable({scroll:false}).resizable({
+	  $("div[id = draggable]").draggable({ scroll: false, stack: "div" }).resizable({
     aspectRatio: true
 });
 	$( "span[id = closebutton]").click(function () {
