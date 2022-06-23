@@ -18,27 +18,28 @@ body { padding: 0; margin: 0 }
 #rcorners1 {
     border-radius: 25px 25px 0px 0px;
     background: #FD5000;
-    padding: 20px;
+    padding: 1.5em;
     padding-left: 20px;
     padding-right: 50px;
     text-decoration: none;
     color: #FFFFFF;
     margin-right: -10px;
     z-index:1;
+	overflow: hidden;
 }
 
 #rcorners2 {
-    display: flex;
     border-radius: 25px 25px 0px 0px;
     background: #666666;
-    padding: 20px;
+    padding: 1.5em;
     padding-right: 50px;
     border: 2px solid black;
-    border-top-width: 10px;
+    border-top-width: 0.5em;
     border-bottom-width: 0px;
     text-decoration: none;
     color: #FFFFFF;
     margin-right: -5px;
+	overflow: hidden;
 }
 
 html, body {
@@ -58,16 +59,16 @@ html, body {
 
 #softRX_logo {
     position: absolute;
-    left: 15px;
-    bottom: 15px;
-    width: 5vw;
+    left: 1em;
+    bottom: 1em;
+    width: 3em;
 }
 
 #wsd_logo {
     position: absolute;
-    right: 15px;
-    top: calc(6vh + 15px);
-    height: 3vh;
+    right: 1em;
+    top: 1em;
+    height: 1em;
     filter: brightness(0%);
 }
 
@@ -81,9 +82,10 @@ html, body {
 }
 
 #main_area {
+    position: relative;
     background: #FD5000;
     width: 100%;
-    height: 100vh;
+    height: 94vh;
 }
 
 #photo {
@@ -95,4 +97,78 @@ html, body {
     display: block;
     font: normal normal normal 2vh NDGM;
     cursor: pointer;
+}
+
+
+#photos {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    cursor: grab;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+}
+
+#draggable {
+    display: inline-block;
+    padding: 0.5em;
+    width: 10em;
+    margin-right: -10em;
+    z-index: 2;
+}
+
+.ui-resizable-handle {
+    z-index: auto !important;
+}
+@media (max-aspect-ratio: 1/1) {
+
+    #tabs {
+        display: flex;
+        position: absolute;
+        bottom:0px;
+        flex-direction: column;
+        align-items:center;
+        width: 10vw;
+        font: normal normal normal 2vh NDGM;
+        color: #FFFFFF;
+    }
+
+    #main_area {
+        position: absolute;
+        top:0px;
+        left:10vw;
+        background: #FD5000;
+        width: 90vw;
+        height: 100vh;
+    }
+    #rcorners1 {
+        border-radius: 25px 25px 0px 0px;
+        background: #FD5000;
+        padding: 1.5em;
+        padding-left: 20px;
+        padding-right: 50px;
+        text-decoration: none;
+        color: #FFFFFF;
+        margin-right: -10px;
+        z-index: 1;
+        overflow: hidden;
+        transform:rotate(-90deg);
+    }
+
+    #rcorners2 {
+        border-radius: 25px 25px 0px 0px;
+        background: #666666;
+        padding: 1.5em;
+        padding-right: 50px;
+        border: 2px solid black;
+        border-top-width: 0.5em;
+        border-bottom-width: 0px;
+        text-decoration: none;
+        color: #FFFFFF;
+        margin-right: -5px;
+        overflow: hidden;
+        transform: rotate(-90deg);
+    }
+
 }
