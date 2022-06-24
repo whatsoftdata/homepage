@@ -126,20 +126,24 @@ html, body {
     #tabs {
         display: flex;
         position: absolute;
-        bottom:0px;
-        flex-direction: column;
-        align-items:center;
-        width: 10vw;
+        top: 100vh;
+        flex-direction: row;
+        align-items: flex-end;
+        width: 100vh;
+        height: 10vw;
         font: normal normal normal 2vh NDGM;
         color: #FFFFFF;
+        transform: rotate(-90deg);
+        transform-origin: top left;
+        white-space: nowrap;
     }
 
     #main_area {
         position: absolute;
         top:0px;
-        left:10vw;
+        left:9.5vw;
         background: #FD5000;
-        width: 90vw;
+        width: 90.5vw;
         height: 100vh;
     }
     #rcorners1 {
@@ -153,7 +157,6 @@ html, body {
         margin-right: -10px;
         z-index: 1;
         overflow: hidden;
-        transform:rotate(-90deg);
     }
 
     #rcorners2 {
@@ -168,7 +171,6 @@ html, body {
         color: #FFFFFF;
         margin-right: -5px;
         overflow: hidden;
-        transform: rotate(-90deg);
     }
 
 }
