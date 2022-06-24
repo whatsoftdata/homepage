@@ -21,13 +21,17 @@
 	<script src="../../jquery/jquery-ui.min.js"></script>
 	<script>
 		$(function () {
-			$("div[id = draggable]").draggable({ scroll: false, stack: "div" }).resizable({
+			$(".draggable").draggable({
+				scroll: false, stack: "div"
+			}).resizable({
 				aspectRatio: true
 			});
-			$("span[id = closebutton]").click(function () {
-				$(this).parent().hide();
-				event.stopPropagation();
-			})
+			$("span[id = closebutton]").click(
+				function () {
+					$(this).parent().parent().hide();
+					event.stopPropagation();
+				}
+			)
 		});
 	</script>
 </head>
@@ -43,79 +47,98 @@
 	  <img id = "makeitsoft" src = "../../images/Make_it_soft.png">
 	  <img id = "softRX_logo" src = "../../images/SoftRX_Logo_black.png">
 	  <div id="photos">
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
+	  	<div class="draggable ui-widget-content">
+	  		<div><span id="closebutton">X</span></div>
 	  		<img id="photo" src="images/window_test4.jpg">
 	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/window_test2.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/door_5.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/door_3.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/door_2.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/03_1.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/while.gif">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/before.gif">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/ref3d2.png">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/ref3d.png">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/ref2d2.PNG">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/ref2d.PNG">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/ref_idea.png">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/01_2.png">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/01_1.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/detail_2.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/00_2.jpg">
-	  	</div>
-	  	<div id="draggable" class="ui-widget-content">
-	  		<span id="closebutton">X</span>
-	  		<img id="photo" src="images/00_1.jpg">
-	  	</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/window_test2.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/door_5.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/door_3.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/door_2.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/03_1.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/while.gif">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/before.gif">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/ref3d2.png">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/ref3d.png">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/ref2d2.PNG">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/ref2d.PNG">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/ref_idea.png">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/01_2.png">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/01_1.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/detail_2.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/00_2.jpg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<div><span id="closebutton">X</span></div>
+			<img id="photo" src="images/00_1.jpg">
+		</div>
 	  </div>
 </div>
+	<script>
+
+        //random placement
+        var photo_divs = document.getElementsByClassName("draggable");
+        var winWidth = window.innerWidth;
+        var winHeight = window.innerHeight;
+
+        for (var i = 0; i < photo_divs.length; i++) {
+
+            // shortcut! the current div in the list
+            var thisDiv = photo_divs[i];
+			var y = Math.floor(Math.random() * screen.height * 0.5);
+            var x = Math.floor(Math.random() * screen.width * 0.5);
+            // update top and left position
+			thisDiv.style.top = y + "px";
+			thisDiv.style.left = x + "px";
+
+        }
+	</script>
 </body>
 </html>
