@@ -19,10 +19,12 @@
 	<script>
 		$(function () {
 			$(".draggable").draggable({
-				scroll: false, stack: "div"
+				scroll: false,
+				stack: "div",
+                containment: "#main_area"
 			}).resizable({
 				aspectRatio: true,
-				containment: "#main_area"
+				containment: "#main_area",
 			});
 			$("span[id = closebutton]").click(
 				function () {
@@ -130,8 +132,10 @@
 
             // shortcut! the current div in the list
             var thisDiv = photo_divs[i];
-			var y = Math.floor(Math.random() * screen.height * 0.5);
-            var x = Math.floor(Math.random() * screen.width * 0.5);
+            var y = Math.floor(Math.random() * screen.height * 0.6);
+			var x = Math.floor(Math.random() * screen.width * 0.6);
+			if (screen.height > screen.width) y = y + screen.height * 0.1;
+			else x = x + screen.width * 0.1;
             // update top and left position
 			thisDiv.style.top = y + "px";
 			thisDiv.style.left = x + "px";
