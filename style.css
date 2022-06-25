@@ -96,7 +96,7 @@ html, body {
 
 #closebutton {
     display: inline-block;
-    font: normal normal normal 2vh NDGM;
+    font: normal normal normal 1em NDGM;
     cursor: pointer;
 }
 
@@ -114,8 +114,9 @@ html, body {
     display: flex;
     flex-direction: column;
     padding: 0.2em;
-    padding-bottom: 20px;
-    width: 20vw;
+    padding-bottom: 30px;
+    width: auto;
+    height: 30vh;
     z-index: 2;
     outline: 1px solid black;
     box-shadow: 3px 3px 10px black;
@@ -145,6 +146,16 @@ html, body {
         white-space: nowrap;
     }
 
+    .draggable {
+        position: absolute;
+        padding: 0.2em;
+        padding-bottom: 20px;
+        width: 30vw;
+        height: auto;
+        z-index: 2;
+        outline: 1px solid black;
+        box-shadow: 3px 3px 10px black;
+    }
     #main_area {
         position: absolute;
         top:0px;

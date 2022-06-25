@@ -19,10 +19,12 @@
 	<script>
 		$(function () {
 			$(".draggable").draggable({
-				scroll: false, stack: "div"
+				scroll: false,
+                stack: "div",
+                containment: "#main_area"
 			}).resizable({
                 aspectRatio: true,
-				containment: "#main_area"
+				containment: "#main_area",
 			});
 			$("span[id = closebutton]").click(
 				function () {
@@ -41,6 +43,7 @@
 	 <a id="rcorners2" href = "../../what_the_f__k_is_whatsoftdata/index.html">What_the_f**k_is_whatsoftdata?</a>
  </div>
  <div id="main_area">
+	<div>copyright</div>
  	<img id="wsd_logo" src="../../images/whatsoftdata_Logo.png">
  	<img id="makeitsoft" src="../../images/Make_it_soft.png">
  	<img id="softRX_logo" src="../../images/SoftRX_Logo_black.png">
