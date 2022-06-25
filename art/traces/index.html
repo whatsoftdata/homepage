@@ -21,7 +21,8 @@
 			$(".draggable").draggable({
 				scroll: false, stack: "div"
 			}).resizable({
-				aspectRatio: true
+                aspectRatio: true,
+				containment: "#main_area"
 			});
 			$("span[id = closebutton]").click(
 				function () {
