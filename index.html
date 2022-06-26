@@ -15,6 +15,18 @@
 			font-family: NDGM;
 			src: url('fonts/NeoDunggeunmoPro-Regular.ttf');
 		}
+        .topbar {
+        display:flex;
+		flex-direction:row;
+		align-items:center;	
+		}
+        #handle {
+            height: 3px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-top: 2px groove black;
+            border-bottom: 2px groove black;
+        }
 	</style>
 	<script>
 		$(function () {
@@ -49,7 +61,7 @@
 	  <img id = "softRX_logo" src = "images/SoftRX_Logo_black.png">
 	  <div id="photos">
 		  <div class="draggable ui-widget-content" style="top:10%; left: 10%; width:80%; height: 50%;">
-		  	<div id="handle"><span id="closebutton">X</span></div>
+		  	<div class="topbar"><span id="closebutton">X</span><span id="handle" style="flex-grow:9"></span></div>
 		  	<div style="outline: 1px solid black; overflow: scroll; padding:5px;">
 		  		<h2>MAKE IT SOFT</h2>
 		  		<p>왓소프트데이타는 아트, 디자인, 테크놀로지를 넘나들며 작업하며 사회적, 감각적 경험을 말랑하게 제공하는 콜렉티브입니다. 세상의 모든 단단하고 견고해 보이는 것들로부터 인간적 면모와 우연성, 모호함 등을 끄집어내 부드럽게 풀어놓습니다.</p>
