@@ -94,7 +94,21 @@ html, body {
     outline: 1px solid black;
 }
 
-#closebutton {
+.topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.movehandle {
+    height: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:3px;
+    border-top: 2px groove black;
+    border-bottom: 2px groove black;
+    flex-grow: 9;
+}
+.closebutton {
     display: inline-block;
     font: normal normal normal 1em NDGM;
     cursor: pointer;
@@ -130,7 +144,16 @@ html, body {
 }
 @media (max-aspect-ratio: 1/1) {
 
-    #tabs {
+
+    #makeitsoft {
+        width: 40%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: brightness(0%);
+    }
+        #tabs {
         position: absolute;
         bottom:0;
         left: 10vw;
