@@ -94,19 +94,49 @@ html, body {
     outline: 1px solid black;
 }
 
-#closebutton {
+.topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+	}
+.movehandle {
+    height: 12px;
+    margin-left: 5px;
+	margin-bottom:3px;
+    flex-grow: 9;
+	background-image: linear-gradient(0deg, rgb(255, 255, 255) 60%,rgb(88, 88, 88) 40%);
+	background-size: 1px 7px;
+    cursor: grab;
+}
+.closebutton {
     display: inline-block;
+	margin-bottom:2px;
+	margin-left:1px;
     font: normal normal normal 1em NDGM;
     cursor: pointer;
 }
 
+#copyright{
+	position:absolute;
+	left: 1em;
+	bottom:1em;
+    font: normal normal normal 2vh NDGM;
 
+}
 #photos {
     position: relative;
     display:block;
     width:100%;
     height:100%;
-    cursor: grab;
+	z-index:1;
+}
+
+.ko-text{
+    font: normal normal normal 2vh NDGM;
+	line-height: 1.3em;
+}
+.en-text{
+    font: normal normal normal 2vh NDGM;
 }
 
 .draggable {
@@ -130,7 +160,24 @@ html, body {
 }
 @media (max-aspect-ratio: 1/1) {
 
-    #tabs {
+	#copyright{
+		position:absolute;
+		left: 2.5em;
+		bottom:1em;
+		font: normal normal normal 2vh NDGM;
+		transform: rotate(-90deg);
+        transform-origin: bottom left;
+		width: 100vh;
+	}
+    #makeitsoft {
+        width: 40%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: brightness(0%);
+    }
+        #tabs {
         position: absolute;
         bottom:0;
         left: 10vw;
