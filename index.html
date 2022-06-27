@@ -23,7 +23,7 @@
 			$(".draggable").draggable({
 				scroll: false,
 				stack: "div",
-				handle: ".handle",
+				handle: ".movehandle",
 				containment: "#main_area"
 			}).resizable({
 				aspectRatio: false,
@@ -35,7 +35,6 @@
 					event.stopPropagation();
 				}
 			)
-
 			var draggables = document.getElementsByClassName("draggable");
 			for (var i = 0; i < draggables.length; i++) {
 				var draggable = draggables[i];
@@ -45,7 +44,6 @@
 			}
 			var topbars = document.getElementsByClassName("topbar");
             for (var i = 0; i < topbars.length; i++) {
-
                 // shortcut! the current div in the list
 				var topbar = topbars[i];
 				var closebutton = document.createElement('span');
@@ -55,7 +53,6 @@
 				movehandle.className += 'movehandle';
 				topbar.appendChild(closebutton);
 				topbar.appendChild(movehandle);
-
             }
 		});
 	</script>
@@ -68,12 +65,13 @@
 	 <a id="rcorners2" href = "what_the_f__k_is_whatsoftdata/index.html">What_the_f**k_is_whatsoftdata?</a>
  </div>
  <div id="main_area">
+	  <div id="copyright">Copyright &#169; 2022. whatsoftdata. All rights reserved.</div>
 	  <img id = "wsd_logo" src = "images/whatsoftdata_Logo.png">
 	  <img id = "makeitsoft" src = "images/Make_it_soft.png">
 	  <img id = "softRX_logo" src = "images/SoftRX_Logo_black.png">
 	  <div id="photos">
-		  <div class="draggable ui-widget-content" style="top:10%; left: 10%; width:80%; height: 50%;">
-		  	<div style="outline: 1px solid black; overflow: scroll; padding:5px;">
+		  <div class="draggable ui-widget-content" style="top:10%; left: 10%; width:60%; height: 20%;">
+		  	<div style="outline: 1px solid black; height: 100%; overflow: scroll; padding:5px;">
 		  		<h2>MAKE IT SOFT</h2>
 		  		<p>왓소프트데이타는 아트, 디자인, 테크놀로지를 넘나들며 작업하며 사회적, 감각적 경험을 말랑하게 제공하는 콜렉티브입니다. 세상의 모든 단단하고 견고해 보이는 것들로부터 인간적 면모와 우연성, 모호함 등을 끄집어내 부드럽게 풀어놓습니다.</p>
 		  		<p>Soft Rx는 계속해서 변화하는 유동적인 플랫폼으로, 왓소다의 모든 실험적 시도의 스테이지입니다. 계획된 우연성이 중첩되어 끊임없이 새로운 이야기들을 만들어내도록 설계되었습니다.</p>
