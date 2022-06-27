@@ -18,44 +18,6 @@
 		}
 
 	</style>
-	<script>
-		$(function () {
-			$(".draggable").draggable({
-				scroll: false,
-				stack: "div",
-				handle: ".movehandle",
-				containment: "#main_area"
-			}).resizable({
-				aspectRatio: false,
-				containment: "#main_area"
-			});
-			$("span[class = closebutton]").click(
-				function () {
-					$(this).parent().parent().hide();
-					event.stopPropagation();
-				}
-			)
-			var draggables = document.getElementsByClassName("draggable");
-			for (var i = 0; i < draggables.length; i++) {
-				var draggable = draggables[i];
-                var topbar = document.createElement('div');
-				topbar.className += 'topbar';
-				draggable.insertBefore(topbar, draggable.firstChild);
-			}
-			var topbars = document.getElementsByClassName("topbar");
-            for (var i = 0; i < topbars.length; i++) {
-                // shortcut! the current div in the list
-				var topbar = topbars[i];
-				var closebutton = document.createElement('span');
-				closebutton.className += 'closebutton';
-				closebutton.innerHTML = 'X';
-				var movehandle = document.createElement('span');
-				movehandle.className += 'movehandle';
-				topbar.appendChild(closebutton);
-				topbar.appendChild(movehandle);
-            }
-		});
-	</script>
 </head>
 <body style="overflow:hidden; background-color:#000000;">
  <div id="tabs">
@@ -83,5 +45,56 @@
 		  </div>
 	  </div>
 </div>
+	<script>
+		var draggables = document.getElementsByClassName("draggable");
+		var winWidth = window.innerWidth;
+		var winHeight = window.innerHeight;
+		for (var i = 0; i < draggables.length; i++) {
+			var draggable = draggables[i];
+            var topbar = document.createElement('div');
+			topbar.className += 'topbar';
+			draggable.insertBefore(topbar, draggable.firstChild);
+
+			var y = Math.floor(Math.random() * screen.height * 0.6);
+			var x = Math.floor(Math.random() * screen.width * 0.6);
+			if (screen.height > screen.width) y = y + screen.height * 0.1;
+			else x = x + screen.width * 0.1;
+			// update top and left position
+			draggable.style.top = y + "px";
+			draggable.style.left = x + "px";
+		}
+
+		var topbars = document.getElementsByClassName("topbar");
+        for (var i = 0; i < topbars.length; i++) {
+
+            // shortcut! the current div in the list
+			var topbar = topbars[i];
+			var closebutton = document.createElement('span');
+			closebutton.className += 'closebutton';
+			closebutton.innerHTML = 'X';
+			var movehandle = document.createElement('span');
+			movehandle.className += 'movehandle';
+			topbar.appendChild(closebutton);
+			topbar.appendChild(movehandle);
+
+        }
+		$(function () {
+			$(".draggable").draggable({
+				scroll: false,
+				stack: "div",
+				handle: ".movehandle",
+				containment: "#main_area"
+			}).resizable({
+				aspectRatio: false,
+				containment: "#main_area"
+			});
+			$("span[class = closebutton]").click(
+				function () {
+					$(this).parent().parent().hide();
+					event.stopPropagation();
+				}
+			)
+		});
+	</script>
 </body>
 </html>

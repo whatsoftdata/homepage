@@ -6,6 +6,7 @@
 	<title>whatsoftdata-Traces</title>
 	<link rel="stylesheet" href="../../style.css">
 	<link rel="stylesheet" href="../../jquery/jquery-ui.min.css">
+	<link rel="shortcut icon" href="../../favicon.ico">
 	<script src="../../jquery/external/jquery/jquery.js"></script>
 	<script src="../../jquery/jquery-ui.min.js"></script>
 	<script src="../../jquery/jquery.ui.touch-punch.js"></script>
@@ -16,7 +17,59 @@
             src: url('../../fonts/NeoDunggeunmoPro-Regular.ttf');
         }
 	</style>
+</head>
+<body style="overflow:hidden; background-color:#000000;">
+ <div id="tabs">
+	 <a id="rcorners2" href = "../../index.html">Make it soft</a>
+	 <a id="rcorners2" href = "../threshold/index.html">Threshold</a>
+	 <a id="rcorners1" href = "../traces/index.html">Traces</a>
+	 <a id="rcorners2" href = "../../what_the_f__k_is_whatsoftdata/index.html">What_the_f**k_is_whatsoftdata?</a>
+ </div>
+ <div id="main_area">
+	<div id="copyright">Copyright &#169; 2022. whatsoftdata. All rights reserved.</div>
+ 	<img id="wsd_logo" src="../../images/whatsoftdata_Logo.png">
+ 	<img id="makeitsoft" src="../../images/Make_it_soft.png">
+ 	<img id="softRX_logo" src="../../images/SoftRX_Logo_black.png">
+ 	<div id="photos">
+ 		<div class="draggable ui-widget-content">
+ 			<img id="photo" src="images/cells.gif">
+ 		</div>
+ 	</div>
+ </div>
+ 
 	<script>
+		var draggables = document.getElementsByClassName("draggable");
+		var winWidth = window.innerWidth;
+		var winHeight = window.innerHeight;
+		for (var i = 0; i < draggables.length; i++) {
+			var draggable = draggables[i];
+            var topbar = document.createElement('div');
+			topbar.className += 'topbar';
+			draggable.insertBefore(topbar, draggable.firstChild);
+
+			var y = Math.floor(Math.random() * screen.height * 0.6);
+			var x = Math.floor(Math.random() * screen.width * 0.6);
+			if (screen.height > screen.width) y = y + screen.height * 0.1;
+			else x = x + screen.width * 0.1;
+			// update top and left position
+			draggable.style.top = y + "px";
+			draggable.style.left = x + "px";
+		}
+
+		var topbars = document.getElementsByClassName("topbar");
+        for (var i = 0; i < topbars.length; i++) {
+
+            // shortcut! the current div in the list
+			var topbar = topbars[i];
+			var closebutton = document.createElement('span');
+			closebutton.className += 'closebutton';
+			closebutton.innerHTML = 'X';
+			var movehandle = document.createElement('span');
+			movehandle.className += 'movehandle';
+			topbar.appendChild(closebutton);
+			topbar.appendChild(movehandle);
+
+        }
 		$(function () {
 			$(".draggable").draggable({
 				scroll: false,
@@ -33,45 +86,7 @@
 					event.stopPropagation();
 				}
 			)
-			var draggables = document.getElementsByClassName("draggable");
-			for (var i = 0; i < draggables.length; i++) {
-				var draggable = draggables[i];
-                var topbar = document.createElement('div');
-				topbar.className += 'topbar';
-				draggable.insertBefore(topbar, draggable.firstChild);
-			}
-			var topbars = document.getElementsByClassName("topbar");
-            for (var i = 0; i < topbars.length; i++) {
-                // shortcut! the current div in the list
-				var topbar = topbars[i];
-				var closebutton = document.createElement('span');
-				closebutton.className += 'closebutton';
-				closebutton.innerHTML = 'X';
-				var movehandle = document.createElement('span');
-				movehandle.className += 'movehandle';
-				topbar.appendChild(closebutton);
-				topbar.appendChild(movehandle);
-            }
 		});
 	</script>
-</head>
-<body style="overflow:hidden; background-color:#000000;">
- <div id="tabs">
-	 <a id="rcorners2" href = "../../index.html">Make it soft</a>
-	 <a id="rcorners2" href = "../threshold/index.html">Threshold</a>
-	 <a id="rcorners1" href = "../traces/index.html">Traces</a>
-	 <a id="rcorners2" href = "../../what_the_f__k_is_whatsoftdata/index.html">What_the_f**k_is_whatsoftdata?</a>
- </div>
- <div id="main_area">
-	<div id="copyright">Copyright &#169; 2022. whatsoftdata. All rights reserved.</div>
- 	<img id="wsd_logo" src="../../images/whatsoftdata_Logo.png">
- 	<img id="makeitsoft" src="../../images/Make_it_soft.png">
- 	<img id="softRX_logo" src="../../images/SoftRX_Logo_black.png">
- 	<div id="photos">
- 		<div class="draggable ui-widget-content">
- 			<img id="photo" src="../../images/SoftRX_Logo_black.png">
- 		</div>
- 	</div>
- </div>
 </body>
 </html>
