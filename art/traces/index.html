@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -34,7 +34,40 @@
  		<div class="draggable ui-widget-content">
  			<img id="photo" src="images/cells.gif">
  		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/gut_biome.png">
+		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/microbiome.jpeg">
+		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/old_ui.gif">
+		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/stickmen.gif">
+		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/ui_design.png">
+		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/en_vivo.gif">
+		</div>
+		<div class="draggable ui-widget-content">
+			<img id="photo" src="images/camera_test.jpg">
+		</div>
+		<div class="draggable ui-widget-content aspectoff" style=" top:10%; left: 10%; width:60%; height: 20%;">
+			<div style="outline: 1px solid black; height: 100%; overflow: scroll; padding:5px;">
+		  		<h2 style="font: normal normal normal 3vh NDGM;">흔적 (Traces)</h2>
+		  		<div class="ko-text">
+				<p>Soft Rx 스테이지의 시작점에서 맞닥뜨리는 미디어월 전시 <흔적>은 “공간에 남기는 흔적들이 상호작용하며 새로운 생태계를 만들어가면 어떻게 될까?”라는 질문에서 파생된 인터랙티브 방명록입니다. 공간이 하나의 유기체라면, 그 안에 들어온 사람의 흔적은 그 안에서 세포처럼 사라지지 않고 남아 계속해 그 공간을 변화시키지 않을까 하는 엉뚱한 가설을 시험하는 작업입니다. Soft Rx에 남겨질 나의 한 조각, 소프트 셀은 공간에 가지고 온 나의 감정, 행동 등을 포용해 만들어집니다. 데이터화된 나의 방문은 왓소프트데이타만의 공정 방식을 거쳐 소프트 셀로서 생성되어 생태계 일부로서의 역할을 수행해갑니다.</p>
+		  		</div>
+				<div class ="en-text">
+				<p>The Soft Rx stage opens with a media wall exhibit &#60;Traces&#62;, an interactive guest book. This work came out of the question, “what would happen if all our traces left in the site came alive and formed an ecosystem?” If a site is an organism, each visit brings in a new microorganism that sticks around to transform the site. Each visitor brings their feelings, thoughts, attitudes, actions, and more to this site. whatsoftdata turns that visit into data, processes it, and generates a soft cell that would live on in this parallel ecosystem in the media wall.</p>
+		  		</div>
+			</div>
+		</div>
  	</div>
+
  </div>
  
 	<script>
@@ -80,6 +113,9 @@
 				aspectRatio: true,
 				containment: "#main_area"
 			});
+			$(".aspectoff").resizable({
+				aspectRatio: false
+			})
 			$("span[class = closebutton]").click(
 				function () {
 					$(this).parent().parent().hide();

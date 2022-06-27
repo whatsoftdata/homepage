@@ -85,6 +85,17 @@
 		<div class="draggable ui-widget-content">
 			<img id="photo" src="images/00_1.jpg">
 		</div>
+		<div class="draggable ui-widget-content aspectoff" style=" top:10%; left: 10%; width:60%; height: 20%;">
+			<div style="outline: 1px solid black; height: 100%; overflow: scroll; padding:5px;">
+		  		<h2 style="font: normal normal normal 3vh NDGM;">한계점 - 공감각적 경험 (Threshold)</h2>
+		  		<div class="ko-text">
+				<p>Soft Rx의 계단 앞 위쪽으로, 겹친 문들의 프레임을 통해 보이는 설치 작업 <한계점-공감각적 경계>는 공간을 분리하기도, 이어주기도 하는 “문턱 (Threshold)”을 공감각적 경험으로 녹여낸 전시입니다. 네 면의 벽과 작은 입구는 이 작은 방을 다른 공간과 분리시키며 그 안에서 현재와 과거, 현실과 가상의 경계들이 반복적으로 형성되고 허물어지게 합니다. 50년 넘게 방배동 한쪽의 역사를 견고히 지탱해 낸 문과 창들은 그들의 위치와 역할을 떠나 현재 Soft Rx의 공간에서 사람들의 손길과 움직임에 따라 변화하는 빛과 그림자들을 만들어내며 여러 형태의 통로로서 새로운 기억의 창구가 됩니다.</p>
+				</div>
+				<div class ="en-text">
+				<p>Sitting above the steps and beyond the overlapping door frames, &#60;Threshold&#62; installation transforms the idea of a threshold into a synesthetic overcoming. The four walls and a small opening carve out this small space into one where all boundaries that divide past and future, real and unreal, melt away and reconstruct relentlessly. Hung freely above are the doors and windows that withstood over fifty years in this corner of the Bangbae neighborhood. Now the visitors meander about, moving them and reshaping the paths. &#60;Threshold&#62; intermingles the structure with the people that enter them, rendering it a fluid and malleable vessel for new memories.</p>
+</div>
+			</div>
+		</div>
 	  </div>
 </div>
 	<script>
@@ -130,6 +141,9 @@
 				aspectRatio: true,
 				containment: "#main_area"
 			});
+			$(".aspectoff").resizable({
+				aspectRatio: false
+			})
 			$("span[class = closebutton]").click(
 				function () {
 					$(this).parent().parent().hide();

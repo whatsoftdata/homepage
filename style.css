@@ -120,6 +120,7 @@ html, body {
 	position:absolute;
 	left: 1em;
 	bottom:1em;
+    font: normal normal normal 2vh NDGM;
 
 }
 #photos {
@@ -128,6 +129,14 @@ html, body {
     width:100%;
     height:100%;
 	z-index:1;
+}
+
+.ko-text{
+    font: normal normal normal 2vh NDGM;
+	line-height: 1.3em;
+}
+.en-text{
+    font: normal normal normal 2vh NDGM;
 }
 
 .draggable {
@@ -151,7 +160,15 @@ html, body {
 }
 @media (max-aspect-ratio: 1/1) {
 
-
+	#copyright{
+		position:absolute;
+		left: 2.5em;
+		bottom:1em;
+		font: normal normal normal 2vh NDGM;
+		transform: rotate(-90deg);
+        transform-origin: bottom left;
+		width: 100vh;
+	}
     #makeitsoft {
         width: 40%;
         position: absolute;
