@@ -89,7 +89,10 @@ html, body {
     height: 94%;
 }
 .filename{
-	font: normal normal normal 2vh NDGM;
+	font: normal normal normal 1.5vh NDGM;
+	position:absolute;
+	bottom: 0.5em;
+	overflow: hidden;
 }
 #photo {
     max-width: 100%;
