@@ -95,7 +95,7 @@
 			<img id="photo" src="images/azure_test.jpeg">
 			<span class = "filename">아주르 키넥트 테스트</span>
 		</div>
-		<div class="draggable ui-widget-content aspectoff" style=" top:10%; left: 10%; width:60%; height: 20%;">
+		<div class="draggable ui-widget-content textbox" style=" top:10%; left: 10%; width:60%; height: 20%;">
 			<div style="outline: 1px solid black; height: 100%; overflow: scroll; padding:5px;">
 		  		<h2 style="font: normal normal normal 3vh NDGM;">흔적 (Traces)</h2>
 		  		<div class="ko-text">
@@ -110,60 +110,6 @@
  	</div>
 
  </div>
- 
-	<script>
-		var draggables = document.getElementsByClassName("draggable");
-		var winWidth = window.innerWidth;
-		var winHeight = window.innerHeight;
-		for (var i = 0; i < draggables.length; i++) {
-			var draggable = draggables[i];
-            var topbar = document.createElement('div');
-			topbar.className += 'topbar';
-			draggable.insertBefore(topbar, draggable.firstChild);
-
-			var y = Math.floor(Math.random() * screen.height * 0.6);
-			var x = Math.floor(Math.random() * screen.width * 0.6);
-			if (screen.height > screen.width) y = y + screen.height * 0.1;
-			else x = x + screen.width * 0.1;
-			// update top and left position
-			draggable.style.top = y + "px";
-			draggable.style.left = x + "px";
-		}
-
-		var topbars = document.getElementsByClassName("topbar");
-        for (var i = 0; i < topbars.length; i++) {
-
-            // shortcut! the current div in the list
-			var topbar = topbars[i];
-			var closebutton = document.createElement('span');
-			closebutton.className += 'closebutton';
-			closebutton.innerHTML = 'X';
-			var movehandle = document.createElement('span');
-			movehandle.className += 'movehandle';
-			topbar.appendChild(closebutton);
-			topbar.appendChild(movehandle);
-
-        }
-		$(function () {
-			$(".draggable").draggable({
-				scroll: false,
-				stack: "div",
-				handle: ".movehandle",
-				containment: "#main_area"
-			}).resizable({
-				aspectRatio: true,
-				containment: "#main_area"
-			});
-			$(".aspectoff").resizable({
-				aspectRatio: false
-			})
-			$("span[class = closebutton]").click(
-				function () {
-					$(this).parent().parent().hide();
-					event.stopPropagation();
-				}
-			)
-		});
-	</script>
+<script src="../../draggable_rand_pos.js" ></script>
 </body>
 </html>
