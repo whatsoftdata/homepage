@@ -44,9 +44,9 @@ var mainArea = document.getElementById("main_area");
 var winWidth = mainArea.offsetWidth;
 var winHeight = mainArea.offsetHeight;
 $(window).on("load", function () {
-	$(".draggable").each(function () {
+	$(".draggable").not(".textbox").each(function () {
 		var y = Math.floor(Math.random() * (winHeight- this.offsetHeight));
 		var x = Math.floor(Math.random() * (winWidth - this.offsetWidth));
-		$(this).animate({ top: y + "px", left: x + "px" });
+		$(this).delay(500).animate({ top: y + "px", left: x + "px" });
 	});
 });
