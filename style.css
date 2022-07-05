@@ -185,7 +185,7 @@ html, body {
         filter: brightness(0%);
     }
     #tabs {
-        position: absolute;
+        position: fixed;
         top:100%;
 		left:0px;
         width: 100vh;
