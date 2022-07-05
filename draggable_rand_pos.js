@@ -47,6 +47,6 @@ $(window).on("load", function () {
 	$(".draggable").each(function () {
 		var y = Math.floor(Math.random() * (winHeight- this.offsetHeight));
 		var x = Math.floor(Math.random() * (winWidth - this.offsetWidth));
-		$(this).animate({ top: y + "px", left: x + "px" });
+		$(this).delay(1000).animate({ top: y + "px", left: x + "px" });
 	});
 });
